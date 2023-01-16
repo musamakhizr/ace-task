@@ -10,3 +10,6 @@ The following tasks are completed
 - A person should login from one device at a time. If logged in from any other device should be logged out from other device.(10)
 - Implement throttling on login with 5 attempts as threshold (10)
 
+
+## The Directory /task-q1,2,4 contain other php tasks
+
