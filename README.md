@@ -11,5 +11,5 @@ The following tasks are completed
 - Implement throttling on login with 5 attempts as threshold (10)
 
 
-## The Directory /task-q1,2,4 contain other php tasks
+## The Directory /task-php contain other php tasks
 

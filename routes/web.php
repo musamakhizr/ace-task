@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('throttle:5,1')->group(function () {
+//This route is admin middleware protected
+Route::get('/test', function () {
+    return "Succesfully login as an admin";
+})->middleware(['auth','admin']);
+
+Route::middleware('throttle:10,1')->group(function () {
+
     Route::get('/', function () {
         return view('welcome');
     });

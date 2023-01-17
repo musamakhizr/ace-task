@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Session;
-class SingleDevice
+
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,12 @@ class SingleDevice
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
-
-        if ($user) {
-            $existingSession = Session::where('user_id', $user->id)->where('id', '!=', $request->session()->getId())->first();
-            if ($existingSession) {
-                $existingSession->delete();
-            }
+        if(Auth::user()->role != "admin") {
+            $request->session()->invalidate();
+            return redirect('login')->with([['status'=> "Does not have privileges to access this route."]]);
         }
-
         return $next($request);
+
+
     }
 }
